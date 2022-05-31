@@ -22,7 +22,7 @@
             <router-link class="nav-link" to="/opiniones">Opiniones</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/administracion">Administración</a>
+            <router-link class="nav-link" to="/administracion">Administración</router-link>
           </li>
         </ul>
       </div>
