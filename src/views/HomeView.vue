@@ -1,8 +1,9 @@
 <template>
   <div class="container">
-    <h1>Lista de Juegos Disponibles</h1>
+    <ReviewModal />
+    <h2 class="page-title">Lista de Juegos Disponibles</h2>
     <div>
-      <GameCard />
+      <GameCard @showModal="showModal()" />
     </div>
   </div>
 </template>
@@ -11,11 +12,18 @@
 import Store from '@/store'
 
 import GameCard from '@/components/GameCard.vue'
+import ReviewModal from '@/components/ReviewModal.vue'
 
 export default {
   name: 'HomeView',
+  methods: {
+    showModal() {
+      this.$modal.show('opinion')
+    }
+  },
   components: {
-    GameCard
+    GameCard,
+    ReviewModal
   },
   beforeRouteEnter(to, from, next) {
     Store.dispatch('games/getAllJuegos')
@@ -24,4 +32,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.page-title {
+  margin: 24px 0px;
+}
+</style>

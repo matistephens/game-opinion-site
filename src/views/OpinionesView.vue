@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Opiniones</h1>
+    <h2 class="page-title">Opiniones</h2>
   </div>
 </template>
 

@@ -11,7 +11,7 @@
         <li class="list-group-item">Updated: {{ game.updated }}</li>
       </ul>
       <div class="card-body d-flex justify-content-center">
-        <button type="button" class="btn btn-primary">Opinar</button>
+        <button @click="showModal" type="button" class="btn btn-primary">Opinar</button>
       </div>
     </div>
   </div>
@@ -20,6 +20,12 @@
 <script>
 import { mapState } from 'vuex'
 export default {
+  name: 'gameCard',
+  methods: {
+    showModal() {
+      this.$emit('showModal')
+    }
+  },
   computed: {
     ...mapState('games', {
       games: (state) => state.list
@@ -36,6 +42,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .card {
