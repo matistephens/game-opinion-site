@@ -12,5 +12,12 @@
         "released": "2011-04-18",
         "updated": "2020-08-03",
         "background_image": "https://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg?t=1610490805"
+    },
+    {
+        "name": "Warzone",
+        "rating": 3.60,
+        "released": "2020-03-10",
+        "updated": "2022-04-27",
+        "background_image": "https://i.blogs.es/b2ec36/warzone/1366_2000.jpeg"
     }
 ]
