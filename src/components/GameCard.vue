@@ -11,7 +11,7 @@
         <li class="list-group-item">Updated: {{ game.updated }}</li>
       </ul>
       <div class="card-body d-flex justify-content-center">
-        <button @click="showModal" type="button" class="btn btn-primary">Opinar</button>
+        <button @click="showModal(game.name)" type="button" class="btn btn-primary">Opinar</button>
       </div>
     </div>
   </div>
@@ -20,10 +20,11 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  name: 'gameCard',
+  name: 'GameCard',
   methods: {
-    showModal() {
+    showModal(value) {
       this.$emit('showModal')
+      this.$emit('gameName', value)
     }
   },
   computed: {

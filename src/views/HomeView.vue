@@ -3,9 +3,9 @@
     <div class="row">
       <h2 class="page-title">Lista de Juegos Disponibles</h2>
       <div>
-        <GameCard @showModal="showModal()" />
+        <GameCard @showModal="displayModal()" @gameName="getName" />
       </div>
-      <ReviewModal />
+      <ReviewModal :gameTitle="game" />
     </div>
   </div>
 </template>
@@ -18,9 +18,16 @@ import ReviewModal from '@/components/ReviewModal.vue'
 
 export default {
   name: 'HomeView',
+  data: () => ({
+    game: ''
+  }),
   methods: {
-    showModal() {
+    displayModal() {
       this.$modal.show('opinion')
+    },
+    getName(value) {
+      this.game = value
+      console.log(this.game)
     }
   },
   components: {

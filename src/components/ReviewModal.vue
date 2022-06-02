@@ -2,16 +2,22 @@
   <modal name="opinion" height="auto">
     <div>
       <div class="window-header">
-        <h5>Escribe tu opinion para el juego: Juego</h5>
+        <h5>Escribe tu opinion para el juego: {{ gameTitle }}</h5>
         <div slot="top-right">
           <button class="btn btn-link" @click="$modal.hide('opinion')">❌</button>
         </div>
       </div>
-      <form class="window-body">
+      <form class="window-body" @submit.prevent="addOpinionToGame">
         <div class="window-body-data">
           <div class="input-component">
             <label for="nombre">Nombre</label>
-            <input id="nombre" type="text" class="form-control" placeholder="Tu nombre" />
+            <input
+              id="nombre"
+              type="text"
+              class="form-control"
+              placeholder="Tu nombre"
+              v-model="userName"
+            />
           </div>
           <div class="input-component">
             <label for="opinion">Opiniones</label>
@@ -20,6 +26,7 @@
               class="form-control"
               type="text"
               placeholder="Tu opinion debe ir aquí..."
+              v-model="userOpinion"
             />
           </div>
         </div>
@@ -28,7 +35,9 @@
           <button type="button" class="btn btn-secondary" @click="$modal.hide('opinion')">
             Cerrar
           </button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-primary" @click="$modal.hide('opinion')">
+            Guardar
+          </button>
         </div>
       </form>
     </div>
@@ -36,18 +45,41 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'MyComponent',
+  data: () => ({
+    userName: '',
+    userOpinion: ''
+  }),
   methods: {
+    ...mapActions('games', ['addOpinion']),
+    addOpinionToGame() {
+      this.addOpinion({
+        gameOnList: this.gameTitle,
+        userOpinion: this.userOpinion,
+        userName: this.userName
+      })
+      this.userName = ''
+      this.userOpinion = ''
+    },
     show() {
       this.$modal.show('my-first-modal')
+      this.userName = ''
+      this.userOpinion = ''
     },
     hide() {
       this.$modal.hide('my-first-modal')
+      this.userName = ''
+      this.userOpinion = ''
     }
   },
   mount() {
     this.show()
+  },
+  props: {
+    gameTitle: String
   }
 }
 </script>
