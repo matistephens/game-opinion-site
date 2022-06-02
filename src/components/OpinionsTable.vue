@@ -1,9 +1,15 @@
 <template>
   <div style="width: 100%">
-    <div class="alert alert-danger" role="alert" v-if="opinionsExist">
+    <div class="alert alert-danger" role="alert" v-if="!opinionsAvailable">
       No existen opiniones por mostrar.
     </div>
-    <div class="accordion" id="accordionExample">
+    <div
+      v-for="(opinion, $index) in list"
+      :key="$index"
+      class="accordion"
+      id="accordionExample"
+      v-else
+    >
       <div class="card">
         <div class="card-header" id="headingOne">
           <h2 class="mb-0">
@@ -15,7 +21,7 @@
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              Opinion 1
+              Opinión creada por: {{ opinion.opinions }}. Para el juego {{ opinion.name }}
             </button>
           </h2>
         </div>
@@ -26,7 +32,7 @@
           aria-labelledby="headingOne"
           data-parent="#accordionExample"
         >
-          <div class="card-body">Descripción de la tarea</div>
+          <div class="card-body">{{ opinion.opinions }}</div>
         </div>
       </div>
     </div>
@@ -34,10 +40,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  data: () => ({
-    opinionsExist: true
-  })
+  computed: {
+    ...mapState('games', ['opinionsAvailable', 'list'])
+  }
 }
 </script>
 

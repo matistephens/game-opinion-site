@@ -3,17 +3,19 @@ import Axios from 'axios'
 export const gamesModule = {
   namespaced: true,
   state: {
-    list: []
+    list: [],
+    opinionsAvailable: false
   },
   mutations: {
     SET_LIST(state, newList) {
       state.list = newList
     },
     ADD_OPINION(state, { index, opinions }) {
-      if (state.list[index].opinions) {
+      if (state.opinionsAvailable) {
         state.list[index].opinions.push(opinions)
       } else {
         state.list[index].opinions = [opinions]
+        state.opinionsAvailable = true
       }
     }
   },

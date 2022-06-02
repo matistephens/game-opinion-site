@@ -1,9 +1,9 @@
 <template>
   <div style="width: 100%">
-    <div class="alert alert-danger" role="alert" v-if="opinionsExist">
+    <div class="alert alert-danger" role="alert" v-if="!opinionsAvailable">
       No existen opiniones por administrar.
     </div>
-    <table class="table">
+    <table class="table" v-else>
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
@@ -30,10 +30,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  data: () => ({
-    opinionsExist: true
-  })
+  computed: {
+    ...mapState('games', ['opinionsAvailable', 'list'])
+  }
 }
 </script>
 
