@@ -1,9 +1,11 @@
 <template>
   <div class="container">
-    <ReviewModal />
-    <h2 class="page-title">Lista de Juegos Disponibles</h2>
-    <div>
-      <GameCard @showModal="showModal()" />
+    <div class="row">
+      <h2 class="page-title">Lista de Juegos Disponibles</h2>
+      <div>
+        <GameCard @showModal="showModal()" />
+      </div>
+      <ReviewModal />
     </div>
   </div>
 </template>

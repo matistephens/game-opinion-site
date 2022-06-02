@@ -29,4 +29,7 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+.row {
+  justify-content: center;
+}
 </style>
