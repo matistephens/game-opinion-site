@@ -1,14 +1,13 @@
 <template>
   <div style="width: 100%">
-    <div class="alert alert-danger" role="alert" v-if="!opinionsAvailable">
+    <div class="alert alert-danger" role="alert" v-if="!opinions">
       No existen opiniones por mostrar.
     </div>
     <div
-      v-for="(opinion, $index) in list"
+      v-for="(opinion, $index) in opinions"
       :key="$index"
       class="accordion"
       id="accordionExample"
-      v-else
     >
       <div class="card">
         <div class="card-header" id="headingOne">
@@ -17,22 +16,24 @@
               class="btn btn-link btn-block text-left"
               type="button"
               data-toggle="collapse"
-              data-target="#collapseOne"
+              :data-target="'#opinion' + $index"
               aria-expanded="true"
-              aria-controls="collapseOne"
+              :aria-controls="'opinion' + $index"
             >
-              Opinión creada por: {{ opinion.opinions }}. Para el juego {{ opinion.name }}
+              Opinión creada por: <span style="font-weight: bold">{{ opinion.userName }} </span>.
+              Para el juego
+              <span style="font-weight: bold">{{ opinion.gameTitle }} </span>
             </button>
           </h2>
         </div>
 
         <div
-          id="collapseOne"
-          class="collapse show"
+          :id="'opinion' + $index"
+          class="collapse"
           aria-labelledby="headingOne"
           data-parent="#accordionExample"
         >
-          <div class="card-body">{{ opinion.opinions }}</div>
+          <div class="card-body">{{ opinion.userOpinion }}</div>
         </div>
       </div>
     </div>
@@ -43,7 +44,9 @@
 import { mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState('games', ['opinionsAvailable', 'list'])
+    ...mapState('opinions', {
+      opinions: (state) => state.opinions
+    })
   }
 }
 </script>

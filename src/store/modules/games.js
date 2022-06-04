@@ -3,20 +3,11 @@ import Axios from 'axios'
 export const gamesModule = {
   namespaced: true,
   state: {
-    list: [],
-    opinionsAvailable: false
+    list: []
   },
   mutations: {
     SET_LIST(state, newList) {
       state.list = newList
-    },
-    ADD_OPINION(state, { index, opinions }) {
-      if (state.opinionsAvailable) {
-        state.list[index].opinions.push(opinions)
-      } else {
-        state.list[index].opinions = [opinions]
-        state.opinionsAvailable = true
-      }
     }
   },
   actions: {
@@ -29,12 +20,6 @@ export const gamesModule = {
       } catch (e) {
         console.error(e)
       }
-    },
-    addOpinion(context, { gameOnList, userOpinion, userName }) {
-      const games = context.state.list
-      const index = games.findIndex((game) => game.name === gameOnList)
-      const opinions = { userName, userOpinion }
-      context.commit('ADD_OPINION', { index, opinions })
     }
   }
 }

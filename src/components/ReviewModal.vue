@@ -7,7 +7,7 @@
           <button class="btn btn-link" @click="$modal.hide('opinion')">❌</button>
         </div>
       </div>
-      <form class="window-body" @submit.prevent="addOpinionToGame">
+      <form class="window-body" @submit.prevent="addOpinionToStore">
         <div class="window-body-data">
           <div class="input-component">
             <label for="nombre">Nombre</label>
@@ -54,10 +54,10 @@ export default {
     userOpinion: ''
   }),
   methods: {
-    ...mapActions('games', ['addOpinion']),
-    addOpinionToGame() {
+    ...mapActions('opinions', ['addOpinion']),
+    addOpinionToStore() {
       this.addOpinion({
-        gameOnList: this.gameTitle,
+        gameTitle: this.gameTitle,
         userOpinion: this.userOpinion,
         userName: this.userName
       })
