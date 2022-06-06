@@ -11,7 +11,28 @@
         "rating": 4.62,
         "released": "2011-04-18",
         "updated": "2020-08-03",
-        "background_image": "https://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg?t=1610490805"
+        "background_image": "https://pivigames.blog/wp-content/uploads/2018/07/portal-2-mac-2844-0-min.jpg"
+    },
+    {
+        "name": "The Witcher 3: Wild Hund",
+        "rating": 4.67,
+        "released": "2015-05-18",
+        "updated": "2020-10-02",
+        "background_image": "https://i.ibb.co/Jrm32qK/juego3.jpg"
+    },
+    {
+        "name": "Tomb Raider",
+        "rating": 4.06,
+        "released": "2015-05-18",
+        "updated": "2020-10-02",
+        "background_image": "https://i.ibb.co/3NyjZ00/juego4.jpg"
+    },
+    {
+        "name": "The Elder Scrolls V: Skyrim",
+        "rating": 4.42,
+        "released": "2015-05-18",
+        "updated": "2020-10-02",
+        "background_image": "https://i.ibb.co/jr0zXT1/juego5.jpg"
     },
     {
         "name": "Warzone",

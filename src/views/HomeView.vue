@@ -27,7 +27,6 @@ export default {
     },
     getName(value) {
       this.game = value
-      console.log(this.game)
     }
   },
   components: {

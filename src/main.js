@@ -5,6 +5,7 @@ import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import VModal from 'vue-js-modal'
+import 'font-awesome/css/font-awesome.css'
 
 Vue.config.productionTip = false
 

@@ -1,6 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Games Opinion</a>
+    <router-link class="navbar-brand" to="/"
+      ><i class="fa fa-gamepad" aria-hidden="true"></i>Games Opinion</router-link
+    >
     <button
       class="navbar-toggler"
       type="button"
@@ -15,13 +17,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <router-link class="nav-link" to="/">Home</router-link>
+          <router-link class="nav-link" to="/">
+            <i class="fa fa-home" aria-hidden="true"></i>Home</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/opiniones">Opiniones</router-link>
+          <router-link class="nav-link" to="/opiniones"
+            ><i class="fa fa-commenting-o" aria-hidden="true"></i>Opiniones</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/administracion">Administración</router-link>
+          <router-link class="nav-link" to="/administracion"
+            ><i class="fa fa-cog" aria-hidden="true"></i>Administración</router-link
+          >
         </li>
       </ul>
     </div>
@@ -32,4 +40,8 @@
 export default {}
 </script>
 
-<style></style>
+<style>
+.fa {
+  margin-right: 4px;
+}
+</style>

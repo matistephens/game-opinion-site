@@ -18,6 +18,16 @@ const routes = [
     path: '/administracion',
     name: 'administracion',
     component: () => import('@/views/AdministracionView.vue')
+  },
+  {
+    path: '/administracion/editar/:id',
+    name: 'editar',
+    component: () => import('@/views/EditarView.vue')
+  },
+  {
+    path: '/*',
+    name: 'pageNotFound',
+    component: () => import('@/views/NotFoundView.vue')
   }
 ]
 

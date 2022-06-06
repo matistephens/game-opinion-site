@@ -1,9 +1,9 @@
 <template>
   <div style="width: 100%">
-    <div class="alert alert-danger" role="alert" v-if="!opinionsAvailable">
+    <div class="alert alert-danger" role="alert" v-if="!opinions">
       No existen opiniones por administrar.
     </div>
-    <table class="table" v-else>
+    <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
@@ -14,14 +14,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+        <tr v-for="(opinion, $index) in opinions" :key="$index">
+          <th scope="row">{{ $index }}</th>
+          <td>{{ opinion.userName }}</td>
+          <td>{{ opinion.gameTitle }}</td>
+          <td>{{ opinion.userOpinion }}</td>
           <td class="buttons-table">
-            <button type="button" class="btn btn-danger">Eliminar</button>
-            <button type="button" class="btn btn-primary">Editar</button>
+            <button @click="deleteOpinion($index)" type="button" class="btn btn-danger">
+              Eliminar
+            </button>
+            <button @click="gameToEdit(opinion.gameTitle)" type="button" class="btn btn-primary">
+              <router-link class="edit-button" :to="'/administracion/editar/' + $index"
+                >Editar</router-link
+              >
+            </button>
           </td>
         </tr>
       </tbody>
@@ -30,10 +36,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapState('games', ['opinionsAvailable', 'list'])
+    ...mapState('opinions', {
+      opinions: (state) => state.opinions
+    })
+  },
+  methods: {
+    ...mapActions('opinions', ['removeOpinion', 'editGame']),
+    deleteOpinion(index) {
+      this.removeOpinion(index)
+    },
+    gameToEdit(game) {
+      this.editGame(game)
+    }
   }
 }
 </script>
@@ -45,5 +62,12 @@ export default {
 }
 .buttons-column {
   width: 200px;
+}
+.edit-button {
+  color: white;
+}
+.edit-button:hover {
+  color: white;
+  text-decoration: none;
 }
 </style>
